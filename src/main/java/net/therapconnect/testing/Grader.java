@@ -11,6 +11,9 @@ public class Grader {
         if (marks_number < 60) {
             return 'F';
         }
+        if (marks_number < 90) {
+            return 'B';
+        }
         else return 'A';
     }
 }

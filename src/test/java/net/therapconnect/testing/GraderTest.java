@@ -23,6 +23,11 @@ class GraderTest {
         assertEquals('A',_grader.determineLetterGrade(91));
     }
     @Test
+    void shouldReturn_B(){
+        Grader _grader = new Grader();
+        assertEquals('B',_grader.determineLetterGrade(89));
+    }
+    @Test
     void negativeShouldReturnIllegalArgumentException(){
         Grader _grader = new Grader();
         assertThrows(IllegalArgumentException.class, () -> {
