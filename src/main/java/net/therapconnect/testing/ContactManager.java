@@ -16,4 +16,7 @@ public class ContactManager {
         return str.matches(regex);
     }
 
+    public boolean passwordMustBeValid(String str) {
+        return str.length()>=8 && str.length()<=100;
+    }
 }

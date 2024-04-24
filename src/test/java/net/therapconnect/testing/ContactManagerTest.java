@@ -21,4 +21,11 @@ public class ContactManagerTest {
         var cm = new ContactManager();
         assertTrue(cm.determinePhoneNumberIsAString("987654321"));
     }
+
+
+    @Test
+    void passwordShouldBeValid(){
+        var cm = new ContactManager();
+        assertTrue(cm.passwordMustBeValid("acakjh34"));
+    }
 }
