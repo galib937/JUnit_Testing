@@ -1,6 +1,8 @@
 package net.therapconnect.testing;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,6 +37,14 @@ public class ContactManagerTest {
     void passwordShouldBeValid(){
         var cm = new ContactManager();
         assertTrue(cm.passwordMustBeValid("acakjh34"));
+    }
+
+    @DisplayName("Testing parameterized tests")
+    @ParameterizedTest
+    @ValueSource(strings = {"ggman","reacher","keyboardwarrior420"})
+    public void testingParameterizedTests(String firstname){
+        var cm = new ContactManager();
+        assertTrue(cm.determineFirstNameIsAString(firstname));
     }
 
 }
