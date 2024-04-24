@@ -36,4 +36,5 @@ public class ContactManagerTest {
         var cm = new ContactManager();
         assertTrue(cm.passwordMustBeValid("acakjh34"));
     }
+
 }
