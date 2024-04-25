@@ -2,6 +2,8 @@ package net.therapconnect.testing;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -19,6 +21,19 @@ public class ContactManagerTest {
     static void shouldRunAfterAll(){
         System.out.println("Running After everything has done executing");
     }
+
+    @Disabled
+    @BeforeEach
+    void shouldRunBeforeEach(){
+        System.out.println("Running Before each test");
+    }
+
+    @Disabled
+    @AfterEach
+    void shouldRunAfterEach(){
+        System.out.println("Running After each test");
+    }
+
     @Test
     void FirstnameShouldBeString(){
         var cm = new ContactManager();
@@ -43,26 +58,6 @@ public class ContactManagerTest {
         assertTrue(cm.passwordMustBeValid("acakjh34"));
     }
 
-    @DisplayName("Testing parameterized tests with value source")
-    @ParameterizedTest
-    @ValueSource(strings = {"ggman","reacher","keyboardwarrior420"})
-    public void testingParameterizedTests(String firstname){
-        var cm = new ContactManager();
-        assertTrue(cm.determineFirstNameIsAString(firstname));
-    }
-
-
-//    @Disabled
-    @DisplayName("Testing parameterized tests with method source")
-    @ParameterizedTest
-    @MethodSource("phoneNumbers")
-    public void testingParameterizedTestsWithMethodSource(String firstname){
-        var cm = new ContactManager();
-        assertTrue(cm.determineFirstNameIsAString(firstname));
-    }
-    public static List<String> phoneNumbers(){
-        return Arrays.asList("ggman","reacher","keyboardwarrior");
-    }
 
     @Nested
     class nestedParameterized{
@@ -75,7 +70,7 @@ public class ContactManagerTest {
         }
 
 
-        //    @Disabled
+        @Disabled
         @DisplayName("Testing parameterized tests with method source")
         @ParameterizedTest
         @MethodSource("phoneNumbers")
@@ -87,4 +82,28 @@ public class ContactManagerTest {
             return Arrays.asList("ggman","reacher","keyboardwarrior");
         }
     }
+
+    @Nested
+    class nestedCSV{
+        //CsvSource
+
+        @DisplayName("Testing CsvSource")
+        @ParameterizedTest
+        @CsvSource({"01698735445", "01698735321", "01698735987"})
+        public void testingCsvSource(String phoneNumber){
+            var cm = new ContactManager();
+            assertTrue(cm.determinePhoneNumberIsAString(phoneNumber));
+        }
+
+        //CsvFileSource
+
+        @DisplayName("Testing CsvFileSource")
+        @ParameterizedTest
+        @CsvFileSource(resources = "/data.csv")
+        public void testingCsvFileSource(String phoneNumber){
+            var cm = new ContactManager();
+            assertTrue(cm.determinePhoneNumberIsAString(phoneNumber));
+        }
+    }
+
 }
