@@ -1,6 +1,7 @@
 package net.therapconnect.testing;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +13,10 @@ class GraderTest {
     @BeforeAll
     public static void happyTextBeforeExecutingOthers(){
         System.out.println("Remember folks that marks is not the end of the world. You can always do better");
+    }
+
+    @BeforeEach
+    public void shouldRunBeforeEach(){
         grader = new Grader();
     }
 
