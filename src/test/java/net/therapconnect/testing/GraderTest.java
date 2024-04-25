@@ -7,31 +7,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GraderTest {
 
+    public static Grader grader;
+
     @BeforeAll
     public static void happyTextBeforeExecutingOthers(){
         System.out.println("Remember folks that marks is not the end of the world. You can always do better");
+        grader = new Grader();
     }
 
     @Test
     void shouldReturn_F() {
-        var grader = new Grader();
         assertEquals('F',grader.determineLetterGrade(59));
     }
     @Test
     void shouldReturn_A(){
-        Grader _grader = new Grader();
-        assertEquals('A',_grader.determineLetterGrade(91));
+        assertEquals('A',grader.determineLetterGrade(91));
     }
     @Test
     void shouldReturn_B(){
-        Grader _grader = new Grader();
-        assertEquals('B',_grader.determineLetterGrade(89));
+        assertEquals('B',grader.determineLetterGrade(89));
     }
     @Test
     void negativeShouldReturnIllegalArgumentException(){
-        Grader _grader = new Grader();
         assertThrows(IllegalArgumentException.class, () -> {
-            _grader.determineLetterGrade(-1);
+            grader.determineLetterGrade(-1);
         });
     }
 
