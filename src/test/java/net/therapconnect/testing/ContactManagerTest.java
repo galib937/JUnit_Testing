@@ -58,7 +58,6 @@ public class ContactManagerTest {
         assertTrue(contactManager.passwordMustBeValid("acakjh34"));
     }
 
-
     @Nested
     class nestedParameterized{
         @DisplayName("Testing parameterized tests with value source")
