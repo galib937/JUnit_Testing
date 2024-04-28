@@ -13,6 +13,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ContactManagerTest {
+
+    public static ContactManager contactManager;
+
     @BeforeAll
     static void shouldRunBeforeAll(){
         System.out.println("Running Before anything has been run");
@@ -22,10 +25,11 @@ public class ContactManagerTest {
         System.out.println("Running After everything has done executing");
     }
 
-    @Disabled
+//    @Disabled
     @BeforeEach
     void shouldRunBeforeEach(){
         System.out.println("Running Before each test");
+        contactManager = new ContactManager();
     }
 
     @Disabled
@@ -36,26 +40,22 @@ public class ContactManagerTest {
 
     @Test
     void FirstnameShouldBeString(){
-        var cm = new ContactManager();
-        assertTrue(cm.determineFirstNameIsAString("John"));
+        assertTrue(contactManager.determineFirstNameIsAString("John"));
     }
 
     @Test
     void LastnameShouldBeString(){
-        var cm = new ContactManager();
-        assertTrue(cm.determineLastNameIsAString("Doe"));
+        assertTrue(contactManager.determineLastNameIsAString("Doe"));
     }
     @Test
     void phoneNumberShouldBeString(){
-        var cm = new ContactManager();
-        assertTrue(cm.determinePhoneNumberIsAString("987654321"));
+        assertTrue(contactManager.determinePhoneNumberIsAString("987654321"));
     }
 
     @DisplayName("Testing the repeated tests")
     @RepeatedTest(value = 10)
     void passwordShouldBeValid(){
-        var cm = new ContactManager();
-        assertTrue(cm.passwordMustBeValid("acakjh34"));
+        assertTrue(contactManager.passwordMustBeValid("acakjh34"));
     }
 
 
@@ -65,8 +65,7 @@ public class ContactManagerTest {
         @ParameterizedTest
         @ValueSource(strings = {"ggman","reacher","keyboardwarrior"})
         public void testingParameterizedTests(String firstname){
-            var cm = new ContactManager();
-            assertTrue(cm.determineFirstNameIsAString(firstname));
+            assertTrue(contactManager.determineFirstNameIsAString(firstname));
         }
 
 
@@ -75,8 +74,7 @@ public class ContactManagerTest {
         @ParameterizedTest
         @MethodSource("phoneNumbers")
         public void testingParameterizedTestsWithMethodSource(String firstname){
-            var cm = new ContactManager();
-            assertTrue(cm.determineFirstNameIsAString(firstname));
+            assertTrue(contactManager.determineFirstNameIsAString(firstname));
         }
         public static List<String> phoneNumbers(){
             return Arrays.asList("ggman","reacher","keyboardwarrior");
@@ -91,8 +89,7 @@ public class ContactManagerTest {
         @ParameterizedTest
         @CsvSource({"01698735445", "01698735321", "01698735987"})
         public void testingCsvSource(String phoneNumber){
-            var cm = new ContactManager();
-            assertTrue(cm.determinePhoneNumberIsAString(phoneNumber));
+            assertTrue(contactManager.determinePhoneNumberIsAString(phoneNumber));
         }
 
         //CsvFileSource
@@ -101,8 +98,7 @@ public class ContactManagerTest {
         @ParameterizedTest
         @CsvFileSource(resources = "/data.csv")
         public void testingCsvFileSource(String phoneNumber){
-            var cm = new ContactManager();
-            assertTrue(cm.determinePhoneNumberIsAString(phoneNumber));
+            assertTrue(contactManager.determinePhoneNumberIsAString(phoneNumber));
         }
     }
 
