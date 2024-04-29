@@ -4,11 +4,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ContactManager {
-//    Map<String,Contact> contactList = new ConcurrentHashMap<>(String,Contact);
-//
-//    public void addContact(String firstName, String lastName, String phoneNumber){
-//        Contact contact = new
-//    }
 
     public boolean determineFirstNameIsAString(String str) {
         String regex = "^[a-zA-Z]+$";
@@ -26,6 +21,6 @@ public class ContactManager {
     }
 
     public boolean passwordMustBeValid(String str) {
-        return str.length()>=8 && str.length()<=100;
+        return str.length() >= 8 && str.length() <= 100;
     }
 }

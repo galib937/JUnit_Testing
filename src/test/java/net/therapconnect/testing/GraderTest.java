@@ -11,29 +11,32 @@ class GraderTest {
     public static Grader grader;
 
     @BeforeAll
-    public static void happyTextBeforeExecutingOthers(){
+    public static void happyTextBeforeExecutingOthers() {
         System.out.println("Remember folks that marks is not the end of the world. You can always do better");
     }
 
     @BeforeEach
-    public void shouldRunBeforeEach(){
+    public void shouldRunBeforeEach() {
         grader = new Grader();
     }
 
     @Test
     void shouldReturnF() {
-        assertEquals('F',grader.determineLetterGrade(59));
+        assertEquals('F', grader.determineLetterGrade(59));
     }
+
     @Test
-    void shouldReturnA(){
-        assertEquals('A',grader.determineLetterGrade(91));
+    void shouldReturnA() {
+        assertEquals('A', grader.determineLetterGrade(91));
     }
+
     @Test
-    void shouldReturnB(){
-        assertEquals('B',grader.determineLetterGrade(89));
+    void shouldReturnB() {
+        assertEquals('B', grader.determineLetterGrade(89));
     }
+
     @Test
-    void negativeShouldReturnIllegalArgumentException(){
+    void negativeShouldReturnIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> {
             grader.determineLetterGrade(-1);
         });

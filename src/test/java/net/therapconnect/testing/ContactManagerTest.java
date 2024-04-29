@@ -17,46 +17,46 @@ public class ContactManagerTest {
     public static ContactManager contactManager;
 
     @BeforeAll
-    static void shouldRunBeforeAll(){
+    static void shouldRunBeforeAll() {
         System.out.println("Running Before anything has been run");
     }
 
     @AfterAll
-    static void shouldRunAfterAll(){
+    static void shouldRunAfterAll() {
         System.out.println("Running After everything has done executing");
     }
 
-//    @Disabled
+    //    @Disabled
     @BeforeEach
-    void shouldRunBeforeEach(){
+    void shouldRunBeforeEach() {
         System.out.println("Running Before each test");
         contactManager = new ContactManager();
     }
 
     @Disabled
     @AfterEach
-    void shouldRunAfterEach(){
+    void shouldRunAfterEach() {
         System.out.println("Running After each test");
     }
 
     @Test
-    void FirstnameShouldBeString(){
+    void FirstnameShouldBeString() {
         assertTrue(contactManager.determineFirstNameIsAString("John"));
     }
 
     @Test
-    void LastnameShouldBeString(){
+    void LastnameShouldBeString() {
         assertTrue(contactManager.determineLastNameIsAString("Doe"));
     }
 
     @Test
-    void phoneNumberShouldBeString(){
+    void phoneNumberShouldBeString() {
         assertTrue(contactManager.determinePhoneNumberIsAString("987654321"));
     }
 
     @DisplayName("Testing the repeated tests")
     @RepeatedTest(value = 10)
-    void passwordShouldBeValid(){
+    void passwordShouldBeValid() {
         assertTrue(contactManager.passwordMustBeValid("acakjh34"));
     }
 
