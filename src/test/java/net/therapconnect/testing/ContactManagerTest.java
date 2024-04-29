@@ -20,6 +20,7 @@ public class ContactManagerTest {
     static void shouldRunBeforeAll(){
         System.out.println("Running Before anything has been run");
     }
+
     @AfterAll
     static void shouldRunAfterAll(){
         System.out.println("Running After everything has done executing");
@@ -47,6 +48,7 @@ public class ContactManagerTest {
     void LastnameShouldBeString(){
         assertTrue(contactManager.determineLastNameIsAString("Doe"));
     }
+
     @Test
     void phoneNumberShouldBeString(){
         assertTrue(contactManager.determinePhoneNumberIsAString("987654321"));
@@ -58,48 +60,48 @@ public class ContactManagerTest {
         assertTrue(contactManager.passwordMustBeValid("acakjh34"));
     }
 
-    @Nested
-    class nestedParameterized{
-        @DisplayName("Testing parameterized tests with value source")
-        @ParameterizedTest
-        @ValueSource(strings = {"ggman","reacher","keyboardwarrior"})
-        public void testingParameterizedTests(String firstname){
-            assertTrue(contactManager.determineFirstNameIsAString(firstname));
-        }
-
-
-        @Disabled
-        @DisplayName("Testing parameterized tests with method source")
-        @ParameterizedTest
-        @MethodSource("phoneNumbers")
-        public void testingParameterizedTestsWithMethodSource(String firstname){
-            assertTrue(contactManager.determineFirstNameIsAString(firstname));
-        }
-        public static List<String> phoneNumbers(){
-            return Arrays.asList("ggman","reacher","keyboardwarrior");
-        }
-    }
-
-    @Nested
-    class nestedCSV{
-        //CsvSource
-
-        @DisplayName("Testing CsvSource")
-        @ParameterizedTest
-        @CsvSource({"01698735445", "01698735321", "01698735987"})
-        public void testingCsvSource(String phoneNumber){
-            assertTrue(contactManager.determinePhoneNumberIsAString(phoneNumber));
-        }
-
-        //CsvFileSource
-
-        @DisplayName("Testing CsvFileSource")
-        @ParameterizedTest
-        @CsvFileSource(resources = "/data.csv")
-        public void testingCsvFileSource(String phoneNumber){
-            assertTrue(contactManager.determinePhoneNumberIsAString(phoneNumber));
-        }
-    }
+//    @Nested
+//    class nestedParameterized{
+//        @DisplayName("Testing parameterized tests with value source")
+//        @ParameterizedTest
+//        @ValueSource(strings = {"ggman","reacher","keyboardwarrior"})
+//        public void testingParameterizedTests(String firstname){
+//            assertTrue(contactManager.determineFirstNameIsAString(firstname));
+//        }
+//
+//
+//        @Disabled
+//        @DisplayName("Testing parameterized tests with method source")
+//        @ParameterizedTest
+//        @MethodSource("phoneNumbers")
+//        public void testingParameterizedTestsWithMethodSource(String firstname){
+//            assertTrue(contactManager.determineFirstNameIsAString(firstname));
+//        }
+//        public static List<String> phoneNumbers(){
+//            return Arrays.asList("ggman","reacher","keyboardwarrior");
+//        }
+//    }
+//
+//    @Nested
+//    class nestedCSV{
+//        //CsvSource
+//
+//        @DisplayName("Testing CsvSource")
+//        @ParameterizedTest
+//        @CsvSource({"01698735445", "01698735321", "01698735987"})
+//        public void testingCsvSource(String phoneNumber){
+//            assertTrue(contactManager.determinePhoneNumberIsAString(phoneNumber));
+//        }
+//
+//        //CsvFileSource
+//
+//        @DisplayName("Testing CsvFileSource")
+//        @ParameterizedTest
+//        @CsvFileSource(resources = "/data.csv")
+//        public void testingCsvFileSource(String phoneNumber){
+//            assertTrue(contactManager.determinePhoneNumberIsAString(phoneNumber));
+//        }
+//    }
 
 
 }

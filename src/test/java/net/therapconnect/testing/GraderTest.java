@@ -21,15 +21,15 @@ class GraderTest {
     }
 
     @Test
-    void shouldReturn_F() {
+    void shouldReturnF() {
         assertEquals('F',grader.determineLetterGrade(59));
     }
     @Test
-    void shouldReturn_A(){
+    void shouldReturnA(){
         assertEquals('A',grader.determineLetterGrade(91));
     }
     @Test
-    void shouldReturn_B(){
+    void shouldReturnB(){
         assertEquals('B',grader.determineLetterGrade(89));
     }
     @Test
